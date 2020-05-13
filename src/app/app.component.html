@@ -1,5 +1,12 @@
-<input type="text" [(ngModel)]="C2">
-<input type="text" [(ngModel)]="C3">
+
+<div class="container">
+<div class="row col-4 p-3">
+  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Renda mensual unitat familiar:</label>
+  <input class="form-control m-1" type="text" [(ngModel)]="C2">
+  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Membres de la unitat familiar:</label>
+  <input class="form-control m-1" type="text" [(ngModel)]="C3">
+</div>
+
 
 <br />Renda mensual equivalent = {{ C5().toFixed(2) }} €
 <br />quota personal escolarizacio = {{ D12() }} €
@@ -23,3 +30,5 @@
 <br />esporadic menjador lactants = {{ D39() }} €
 <br />esporadic berenar = {{ D40() }} €
 <br />esporadic 30 mins = {{ D41() }} €
+
+</div>
