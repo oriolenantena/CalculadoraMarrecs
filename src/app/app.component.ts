@@ -115,7 +115,10 @@ const M8 = 1.00; // %
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = test();
+  
+  germans = false;
+  discapacitat = false;
+  regim_acolliment = false;
 
   C2 = 17000; // Renda mensual unitat familiar
   C3 = 3; // Membres de la unitat familiar
@@ -126,20 +129,20 @@ export class AppComponent {
   D16() {return this.personal_quota(B16, C16);} // quota menjador lactants personal
   D17() {return this.personal_quota(B17, C17);} // quota berenar personal
 
-  D20() {return this.personal_quota(B20, B20);} // servei acollida set a juny personal
-  D21() {return this.personal_quota(B21, B21);} // servei acollida juliol personal
+  D20() {return this.personal_quota(B20, C20);} // servei acollida set a juny personal
+  D21() {return this.personal_quota(B21, C21);} // servei acollida juliol personal
 
-  D28() {return this.personal_quota(B28, B28);} // menjador 3 cops setmana complert
-  D29() {return this.personal_quota(B29, B29);} // menjador 3 cops setmana lactants
+  D28() {return this.personal_quota(B28, C28);} // menjador 3 cops setmana complert
+  D29() {return this.personal_quota(B29, C29);} // menjador 3 cops setmana lactants
   
-  D31() {return this.personal_quota(B31, B31);} // menjador 2 cops setmana complert
-  D32() {return this.personal_quota(B32, B32);} // menjador 2 cops setmana lactants
+  D31() {return this.personal_quota(B31, C31);} // menjador 2 cops setmana complert
+  D32() {return this.personal_quota(B32, C32);} // menjador 2 cops setmana lactants
 
-  D34() {return this.personal_quota(B34, B34);} // menjador 1 cops setmana complert
-  D35() {return this.personal_quota(B35, B35);} // menjador 1 cops setmana lactants
+  D34() {return this.personal_quota(B34, C34);} // menjador 1 cops setmana complert
+  D35() {return this.personal_quota(B35, C35);} // menjador 1 cops setmana lactants
 
-  D38() {return this.personal_quota(B38, B38);} // esporadic menjador complert
-  D39() {return this.personal_quota(B39, B39);} // esporadic menjador lactants
+  D38() {return this.personal_quota(B38, C38);} // esporadic menjador complert
+  D39() {return this.personal_quota(B39, C39);} // esporadic menjador lactants
   // D40() {return this.personal_quota(B40, B40);} // esporadic berenar
   D40() {return "0.65";} // hardcoded en sheet
   D41() {return this.personal_quota(B41, B41);} // esporadic 30 mins
@@ -148,13 +151,22 @@ export class AppComponent {
 
   personal_quota(basic: number, minim: number): string {
     let result = this.personal_quota_raw(basic, minim);
-    if (result == -1) return " ";
-    return result.toFixed(2);
+
+    let extra_discount = 0;
+    if (this.germans) extra_discount = extra_discount + 0.2;
+    if (this.discapacitat) extra_discount = extra_discount + 0.1;
+    if (this.regim_acolliment) extra_discount = extra_discount + 0.1;
+
+    if (extra_discount > 0.2) extra_discount = 0.2; // max discount
+
+    const final_result = result-(result*extra_discount);
+
+    if (final_result == -1) return " ";
+    return final_result.toFixed(2);
   }
 
   personal_quota_raw(basic: number, minim: number): number {
-    if (this.C5()>K8) return B12;
-    if (K7<this.C5() && this.C5() < L7) return ((basic*M6)+((basic*M7)-(basic*M6))*(this.C5()-K7)/(L7-K7));
+    if (this.C5()>K8) return basic;
     if (K7<this.C5() && this.C5() < L7) return ((basic*M6)+((basic*M7)-(basic*M6))*(this.C5()-K7)/(L7-K7));
     if (K6<this.C5() && this.C5() < L6) return ((basic*M5)+((basic*M6)-(basic*M5))*(this.C5()-K6)/(L6-K6));
     if (K5<this.C5() && this.C5() < L5) return ((basic*M4)+((basic*M5)-(basic*M4))*(this.C5()-K5)/(L5-K5));
@@ -162,8 +174,4 @@ export class AppComponent {
     if (this.C5() < L3) return minim;
     return -1;
   }
-}
-
-function test(): string {
-  return "hitest";
 }
