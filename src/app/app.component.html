@@ -1,114 +1,252 @@
-
 <div class="container">
 
-  <div class="row col-md-6 p-3">
+  <div class="row col-md-8">
     <img src="./assets/images/logo.png">
   </div>
-  <div class="row col-md-4 p-3">
-    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Renda mensual unitat familiar:</label>
-    <small>Els ingressos familiars s’obtindran per la suma de les caselles 435 (base imposable general) i 460 (base imposable de l'estalvi) de la declaració de la renda corresponent a l'exercici 2019 de cadascun dels membres del nucli familiar.</small>
-    <input class="form-control m-1" type="text" [(ngModel)]="C2">
-    <br />
-    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Membres de la unitat familiar:</label>
-    <small>Inclou persones progenitores, germans/es, infants i persones majors d’edat amb discapacitat</small>
-    Es consideren membres de la unitat familiar, a més de l'infant, els pares, mares, tutors/es o persones encarregades de la guarda i custòdia i germans/es solters/es menors de 25 anys que convisquin al mateix domicili en el moment de formalitzar la matrícula, i majors d'edat quan es tracti de persones amb discapacitat.
-    <input class="form-control m-1" type="text" [(ngModel)]="C3">
 
-    <br />
-    <input type="checkbox" id="germans" name="germans" [(ngModel)]="germans"> L’infant tindrà, durant el curs escolar pel qual es matricula,
-    Altres germans i/o germanes matriculats/des a Marrecs?
-    <br />
-    <input type="checkbox" id="discapacitat" name="discapacitat" [(ngModel)]="discapacitat"> L’infant tindrà, durant el curs escolar pel qual es matricula,
-    Discapacitat o invalidesa d’algun membre del nucli familiar
-    <br />
-    <input type="checkbox" id="regim_acolliment" name="regim_acolliment" [(ngModel)]="regim_acolliment"> L’infant tindrà, durant el curs escolar pel qual es matricula,
-    Infant en règim d'acolliment 10%
+  <div class="row col-md-8">
+    <div class="m-1">
+      <label class="mr-2">Renda mensual unitat familiar:</label>
+      <img src="./assets/images/help.png" style="width: 20px; height: 20px; cursor:pointer;" data-toggle="tooltip"
+           data-placement="top"
+           title="Els ingressos familiars s’obtindran per la suma de les caselles 435 (base imposable general) i 460 (base imposable de l'estalvi) de la declaració de la renda corresponent a l'exercici 2019 de cadascun dels membres del nucli familiar.">
+      <div class="input-group">
+        <input type="text" class="form-control" [(ngModel)]="C2" aria-label="Renda mensual unitat familiar">
+        <div class="input-group-append">
+          <span class="input-group-text">€</span>
+        </div>
+      </div>
+    </div>
+    <div class="m-1">
+      <label class="mr-2" for="inlineFormCustomSelectPref">Membres de la unitat familiar:</label>
+      <img src="./assets/images/help.png" style="width: 20px; height: 20px; cursor:pointer;" data-toggle="modal"
+           data-target="#exampleModalCenter">
+      <input class="form-control" type="text" [(ngModel)]="C3">
+    </div>
   </div>
 
-  <br />Renda mensual equivalent = {{ C5().toFixed(2) }} €
-  <br />quota personal escolarizacio = {{ D12() }} €
-  <br />quota personal menjador complert = {{ D15() }} €
-  <br />quota personal menjador lactants = {{ D16() }} €
-  <br />quota berenar = {{ D17() }} €
+  <div class="row col-md-8">
+    <br/>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="germans" name="germans" [(ngModel)]="germans">
+      <label class="form-check-label" for="defaultCheck1">
+        L’infant tindrà, durant el curs escolar pel qual es matricula, altres germans i/o germanes matriculats/des a
+        Marrecs?
+      </label>
+    </div>
+    <br/>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="discapacitat" name="discapacitat"
+             [(ngModel)]="discapacitat">
+      <label class="form-check-label" for="defaultCheck2">
+        L’infant tindrà, durant el
+        curs escolar pel qual es matricula,
+        Discapacitat o invalidesa d’algun membre del nucli familiar
+      </label>
+    </div>
+    <br/>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="regim_acolliment" name="regim_acolliment"
+             [(ngModel)]="regim_acolliment">
+      <label class="form-check-label" for="defaultCheck3">
+        L’infant tindrà,
+        durant el curs escolar pel qual es matricula,
+        Infant en règim d'acolliment 10%
+      </label>
+    </div>
+  </div>
 
-  <br />servei acollida set a juny personal = {{ D20() }} €
-  <br />servei acollida juliol personal = {{ D21() }} €
 
-  <br />menjador 3 cops setmana complert = {{ D28() }} €
-  <br />menjador 3 cops setmana lactants = {{ D29() }} €
+  <div class="row col-md-6 p-3">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Servei</th>
+        <th scope="col">Quota bàsica</th>
+        <th scope="col">Quota personal</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">Escolarització</th>
+        <td>{{ B12 }} €</td>
+        <td>{{ D12() }} €</td>
+      </tr>
+      <tr>
+        <th scope="row" colspan="3" class="table-secondary">Servei de menjador</th>
+      </tr>
+      <tr>
+        <th scope="row">Menjador complert</th>
+        <td>{{ B15 }} €</td>
+        <td>{{ D15() }} €</td>
+      </tr>
+      <tr>
+        <th scope="row">Menjador lactants</th>
+        <td>{{ B16 }} €</td>
+        <td>{{ D16() }} €</td>
+      </tr>
+      <tr>
+        <th scope="row">Berenar</th>
+        <td>{{ B17 }} €</td>
+        <td>{{ D17() }} €</td>
+      </tr>
+      <tr>
+        <th scope="row" colspan="3" class="table-secondary">Servei d'acollida (de 8 a 8.30 h o de 17 a 17.30 h)</th>
+      </tr>
+      <tr>
+        <th scope="row">De setembre a juny</th>
+        <td>{{ B20 }} €</td>
+        <td>{{ D20() }} €</td>
+      </tr>
+      <tr>
+        <th scope="row">El juliol</th>
+        <td>{{ B21 }} €</td>
+        <td>{{ D21() }} €</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <br />menjador 2 cops setmana complert = {{ D31() }} €
-  <br />menjador 2 cops setmana lactants = {{ D32() }} €
+  <p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false"
+       aria-controls="multiCollapseExample1">Altres serveis</a>
+  </p>
+  <div class="row">
+    <div class="col">
+      <div class="collapse multi-collapse" id="multiCollapseExample1">
+        <div class="row col-md-6 p-3">
+          <table class="table">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">Servei</th>
+              <th scope="col">Quota bàsica</th>
+              <th scope="col">Quota personal</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row" colspan="3" class="table-secondary">Servei de menjador fix parcial</th>
+            </tr>
+            <tr>
+              <th scope="row" colspan="3" class="table-secondary">3 vegades/setmana</th>
+            </tr>
+            <tr>
+              <th scope="row">Menjador complert</th>
+              <td>{{ B28 }} €</td>
+              <td>{{ D28() }} €</td>
+            </tr>
+            <tr>
+              <th scope="row">Menjador lactants</th>
+              <td>{{ B29 }} €</td>
+              <td>{{ D29() }} €</td>
+            </tr>
+            <tr>
+              <th scope="row" colspan="3" class="table-secondary">2 vegades/setmana</th>
+            </tr>
+            <tr>
+              <th scope="row">Menjador complert</th>
+              <td>{{ B31 }} €</td>
+              <td>{{ D31() }} €</td>
+            </tr>
+            <tr>
+              <th scope="row">Menjador lactants</th>
+              <td>{{ B32 }} €</td>
+              <td>{{ D32() }} €</td>
+            </tr>
+            <tr>
+              <th scope="row" colspan="3" class="table-secondary">2 vegades/setmana</th>
+            </tr>
+            <tr>
+              <th scope="row">Menjador complert</th>
+              <td>{{ B34 }} €</td>
+              <td>{{ D34() }} €</td>
+            </tr>
+            <tr>
+              <th scope="row">Menjador lactants</th>
+              <td>{{ B35 }} €</td>
+              <td>{{ D35() }} €</td>
+            </tr>
+            <tr>
+              <th scope="row" colspan="3" class="table-secondary">Serveis esporàdics</th>
+            </tr>
+            <tr>
+              <th scope="row">Menjador complert</th>
+              <td>{{ B38 }} €</td>
+              <td>{{ D38() }} €</td>
+            </tr>
+            <tr>
+              <th scope="row">Menjador lactants</th>
+              <td>{{ B39 }} €</td>
+              <td>{{ D39() }} €</td>
+            </tr>
+            <tr>
+              <th scope="row">Berenar</th>
+              <td>{{ B40 }} €</td>
+              <td>{{ D40() }} €</td>
+            </tr>
+            <tr>
+              <th scope="row">Esporàdic 30 minuts</th>
+              <td>{{ B41 }} €</td>
+              <td>{{ D41() }} €</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <br />menjador 1 cops setmana complert = {{ D34() }} €
-  <br />menjador 1 cops setmana lactants = {{ D35() }} €
 
-  <br />esporadic menjador complert = {{ D38() }} €
-  <br />esporadic menjador lactants = {{ D39() }} €
-  <br />esporadic berenar = {{ D40() }} €
-  <br />esporadic 30 mins = {{ D41() }} €
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+       aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Membres de la unitat familiar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Inclou persones progenitores, germans/es, infants i persones majors d’edat amb discapacitat</p>
+          Es consideren membres de la unitat familiar, a més de l'infant, els pares, mares, tutors/es o persones
+          encarregades de la guarda i custòdia i germans/es solters/es menors de 25 anys que convisquin al mateix
+          domicili en el moment de formalitzar la matrícula, i majors d'edat quan es tracti de persones amb
+          discapacitat.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Tancar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!--  <hr>-->
+  <!--  <hr>-->
+  <!--  <hr>-->
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+  <!--  <br/>Renda mensual equivalent = {{ C5().toFixed(2) }} €-->
+  <!--  <br/>quota personal escolarizacio = {{ D12() }} €-->
+  <!--  <br/>quota personal menjador complert = {{ D15() }} €-->
+  <!--  <br/>quota personal menjador lactants = {{ D16() }} €-->
+  <!--  <br/>quota berenar = {{ D17() }} €-->
 
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+  <!--  <br/>servei acollida set a juny personal = {{ D20() }} €-->
+  <!--  <br/>servei acollida juliol personal = {{ D21() }} €-->
+
+  <!--  <br/>menjador 3 cops setmana complert = {{ D28() }} €-->
+  <!--  <br/>menjador 3 cops setmana lactants = {{ D29() }} €-->
+
+  <!--  <br/>menjador 2 cops setmana complert = {{ D31() }} €-->
+  <!--  <br/>menjador 2 cops setmana lactants = {{ D32() }} €-->
+
+  <!--  <br/>menjador 1 cops setmana complert = {{ D34() }} €-->
+  <!--  <br/>menjador 1 cops setmana lactants = {{ D35() }} €-->
+
+  <!--  <br/>esporadic menjador complert = {{ D38() }} €-->
+  <!--  <br/>esporadic menjador lactants = {{ D39() }} €-->
+  <!--  <br/>esporadic berenar = {{ D40() }} €-->
+  <!--  <br/>esporadic 30 mins = {{ D41() }} €-->
 
 </div>

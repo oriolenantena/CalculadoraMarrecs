@@ -1,2 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 /* brand color: #f77a20 */
+
+.form-control:focus, .btn-primary:focus, .btn-primary:hover {
+    border-color: #f77a20;
+    box-shadow: 0 0 0 0.2rem rgb(242, 199, 156);
+}
+
+.table .thead-dark th, .btn-primary, .btn-primary:focus, .btn-primary:hover {
+    background-color: #f77a20;
+    border-color: #f77a20;
+}

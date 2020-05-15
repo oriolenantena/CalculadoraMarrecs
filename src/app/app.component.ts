@@ -122,6 +122,28 @@ export class AppComponent {
 
   C2 = 17000; // Renda mensual unitat familiar
   C3 = 3; // Membres de la unitat familiar
+
+  B12 = B12;
+  B15 = B15;
+  B16 = B16;
+  B17 = B17;
+
+  B20 = B20;
+  B21 = B21;
+
+  B28 = B28;
+  B29 = B29;
+
+  B31 = B31;
+  B32 = B32;
+
+  B34 = B34;
+  B35 = B35;
+
+  B38 = B38;
+  B39 = B39;
+  B40 = B40;
+  B41 = B41;
   
   // D12 = this.personal_quota(B12, C12); // quota escolarizacio personal
   D12() {return this.personal_quota(B12, C12);} // quota escolarizacio personal
