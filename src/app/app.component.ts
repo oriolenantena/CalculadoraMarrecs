@@ -115,13 +115,15 @@ const M8 = 1.00; // %
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+
   germans = false;
   discapacitat = false;
   regim_acolliment = false;
 
-  C2 = 17000; // Renda mensual unitat familiar
-  C3 = 3; // Membres de la unitat familiar
+  C2 = 0; // Renda mensual unitat familiar
+  C3 = 2; // Membres de la unitat familiar
+
+  show_table(): boolean {return (this.C2> 0 && this.C3>0);}
 
   B12 = B12;
   B15 = B15;
@@ -144,7 +146,7 @@ export class AppComponent {
   B39 = B39;
   B40 = B40;
   B41 = B41;
-  
+
   // D12 = this.personal_quota(B12, C12); // quota escolarizacio personal
   D12() {return this.personal_quota(B12, C12);} // quota escolarizacio personal
   D15() {return this.personal_quota(B15, C15);} // quota menjador complert personal
@@ -156,7 +158,7 @@ export class AppComponent {
 
   D28() {return this.personal_quota(B28, C28);} // menjador 3 cops setmana complert
   D29() {return this.personal_quota(B29, C29);} // menjador 3 cops setmana lactants
-  
+
   D31() {return this.personal_quota(B31, C31);} // menjador 2 cops setmana complert
   D32() {return this.personal_quota(B32, C32);} // menjador 2 cops setmana lactants
 
@@ -185,6 +187,10 @@ export class AppComponent {
 
     if (final_result == -1) return " ";
     return final_result.toFixed(2);
+  }
+
+  print() {
+    window.print();
   }
 
   personal_quota_raw(basic: number, minim: number): number {

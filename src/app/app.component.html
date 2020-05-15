@@ -1,6 +1,6 @@
-<div class="container-fluid">
+<div class="container-fluid pb-5">
 
-  <div class="row pt-5">
+  <div class="row pt-5 d-print-none">
     <div class="col-md-2"></div>
     <div class="col-md-8">
       <img src="./assets/images/logo.png" style="width: 100%;">
@@ -8,8 +8,69 @@
     <div class="col-md-2"></div>
   </div>
 
+  <div class="row mt-5">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <p>L’Ajuntament de Sant Just Desvern ha implantat per al curs escolar 2020-2021 un nou
+        sistema de preus públics de l’Escola Bressol Municipal Marrecs basat en la tarifació social.
+        Aquesta tarifació permet ajustar les quotes de manera individual i diferenciada a la renda i
+        extensió de la unitat familiar a la que pertanyin els infants que rebin la seva educació
+        infantil a Marrecs.</p>
+
+      <p>Simulador dels preus públics per a l’escolarització d’infants a l’EBM Marrecs
+        L’objectiu d’aquesta calculadora és orientar les famílies amb infants de 0-3 anys que
+        desitgin inscriure’ls a l’EBM Marrecs perquè puguin conèixer quins serien, en el seu cas
+        particular, els preus públics aplicables en cadascun dels serveis que podrien rebre.
+        Els imports resultants es calculen en funció de les variables, de renda i nombre de
+        membres de la unitat familiar, que utilitza el simulador, d’acord amb l’ordenança municipal
+        aprovada per l’Ajuntament de Sant Just Desvern.</p>
+
+      <p style="color: red;">El resultats obtinguts amb la calculadora, per part de les persones particulars, és fruit de les dades
+        introduïdes i no genera cap dret adquirit per a aquestes, ni vincula a l’Administració fins el moment en que a
+        través del corresponent procediment administratiu i la verificació de totes les dades aplicables es calculi la
+        liquidació definitiva de la quota.</p>
+
+      <p>A la quantitat obtinguda se li aplicarà un coeficient social reductor quan es compleixi en el nucli familiar
+        alguna de les següents condicions durant el mateix curs escolar pel qual es matricula</p>
+
+      <p>L’acumulació de condicions donarà lloc a que el coeficient social reductor màxim aplicable sobre l'import de la
+        quota dels serveis sigui del 20%.</p>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+
   <div class="row">
     <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <br/>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="germans" name="germans" [(ngModel)]="germans">
+        <label class="form-check-label">
+          L’infant tindrà altres germans i/o germanes matriculats/des a Marrecs. (20%)
+        </label>
+      </div>
+      <br/>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="discapacitat" name="discapacitat"
+               [(ngModel)]="discapacitat">
+        <label class="form-check-label">
+          Algun membre de la unitat familiar de l'infant tindrà reconeguda la discapacitat o invalidesa. (10%)
+        </label>
+      </div>
+      <br/>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="regim_acolliment" name="regim_acolliment"
+               [(ngModel)]="regim_acolliment">
+        <label class="form-check-label">
+          La unitat familiar de l'infant tindrà un altre infant en règim d'acolliment. (10%)
+        </label>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-3"></div>
     <div class="col-md-3">
       <label class="mr-2" data-toggle="modal"
              data-target="#exampleModalCenter1">Renda mensual unitat familiar:</label>
@@ -29,46 +90,11 @@
            data-target="#exampleModalCenter2">
       <input class="form-control" type="text" [(ngModel)]="C3">
     </div>
-    <div class="col-md-4"></div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-      <br/>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="germans" name="germans" [(ngModel)]="germans">
-        <label class="form-check-label">
-          L’infant tindrà, durant el curs escolar pel qual es matricula, altres germans i/o germanes matriculats/des a
-          Marrecs?
-        </label>
-      </div>
-      <br/>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="discapacitat" name="discapacitat"
-               [(ngModel)]="discapacitat">
-        <label class="form-check-label">
-          L’infant tindrà, durant el
-          curs escolar pel qual es matricula,
-          Discapacitat o invalidesa d’algun membre del nucli familiar
-        </label>
-      </div>
-      <br/>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="regim_acolliment" name="regim_acolliment"
-               [(ngModel)]="regim_acolliment">
-        <label class="form-check-label">
-          L’infant tindrà,
-          durant el curs escolar pel qual es matricula,
-          Infant en règim d'acolliment 10%
-        </label>
-      </div>
-      <div class="col-md-2"></div>
-    </div>
+    <div class="col-md-3"></div>
   </div>
 
 
-  <div class="row pt-5">
+  <div class="row pt-5" *ngIf="show_table()">
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <table class="table">
@@ -81,9 +107,9 @@
         </thead>
         <tbody>
         <tr>
-          <th scope="row">Escolarització</th>
-          <td>{{ B12 }} €</td>
-          <td>{{ D12() }} €</td>
+          <th scope="row" class="table-secondary">Escolarització</th>
+          <td class="table-secondary">{{ B12 }} €</td>
+          <td class="table-secondary">{{ D12() }} €</td>
         </tr>
         <tr>
           <th scope="row" colspan="3" class="table-secondary">Servei de menjador</th>
@@ -112,7 +138,7 @@
           <td>{{ D20() }} €</td>
         </tr>
         <tr>
-          <th scope="row">El juliol</th>
+          <th scope="row">Juliol</th>
           <td>{{ B21 }} €</td>
           <td>{{ D21() }} €</td>
         </tr>
@@ -122,14 +148,18 @@
     <div class="col-md-3"></div>
   </div>
 
-  <div class="row d-flex justify-content-center">
+  <div class="row d-flex justify-content-center" *ngIf="show_table()">
     <p>
-      <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button"
+      <a class="btn btn-primary mr-2" data-toggle="collapse" href="#multiCollapseExample1" role="button"
          aria-expanded="false"
          aria-controls="multiCollapseExample1">Altres serveis</a>
+      <a class="btn btn-primary ml-3 d-print-none" href="#" role="button"
+         (click)="print()"
+         aria-expanded="false"
+         aria-controls="multiCollapseExample1">Imprimir</a>
     </p>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="show_table()">
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <div class="collapse multi-collapse" id="multiCollapseExample1">
@@ -147,7 +177,7 @@
               <th scope="row" colspan="3" class="table-secondary">Servei de menjador fix parcial</th>
             </tr>
             <tr>
-              <th scope="row" colspan="3" class="table-secondary">3 vegades/setmana</th>
+              <th scope="row" colspan="3" class="table-secondary" style="background-color: #d6d8db66;">3 vegades/setmana</th>
             </tr>
             <tr>
               <th scope="row">Menjador complert</th>
@@ -160,7 +190,7 @@
               <td>{{ D29() }} €</td>
             </tr>
             <tr>
-              <th scope="row" colspan="3" class="table-secondary">2 vegades/setmana</th>
+              <th scope="row" colspan="3" class="table-secondary" style="background-color: #d6d8db66;">2 vegades/setmana</th>
             </tr>
             <tr>
               <th scope="row">Menjador complert</th>
@@ -173,7 +203,7 @@
               <td>{{ D32() }} €</td>
             </tr>
             <tr>
-              <th scope="row" colspan="3" class="table-secondary">2 vegades/setmana</th>
+              <th scope="row" colspan="3" class="table-secondary" style="background-color: #d6d8db66;">1 vegades/setmana</th>
             </tr>
             <tr>
               <th scope="row">Menjador complert</th>
@@ -186,7 +216,7 @@
               <td>{{ D35() }} €</td>
             </tr>
             <tr>
-              <th scope="row" colspan="3" class="table-secondary">Serveis esporàdics</th>
+              <th scope="row" colspan="3" class="table-secondary" style="background-color: #d6d8db66;">Serveis esporàdics</th>
             </tr>
             <tr>
               <th scope="row">Menjador complert</th>
