@@ -1,15 +1,20 @@
-<div class="container">
+<div class="container-fluid">
 
-  <div class="row col-md-8">
-    <img src="./assets/images/logo.png">
+  <div class="row pt-5">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <img src="./assets/images/logo.png" style="width: 100%;">
+    </div>
+    <div class="col-md-2"></div>
   </div>
 
-  <div class="row col-md-8">
-    <div class="m-1">
-      <label class="mr-2">Renda mensual unitat familiar:</label>
-      <img src="./assets/images/help.png" style="width: 20px; height: 20px; cursor:pointer;" data-toggle="tooltip"
-           data-placement="top"
-           title="Els ingressos familiars s’obtindran per la suma de les caselles 435 (base imposable general) i 460 (base imposable de l'estalvi) de la declaració de la renda corresponent a l'exercici 2019 de cadascun dels membres del nucli familiar.">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-3">
+      <label class="mr-2" data-toggle="modal"
+             data-target="#exampleModalCenter1">Renda mensual unitat familiar:</label>
+      <img src="./assets/images/help.png" style="width: 20px; height: 20px; cursor:pointer;" data-toggle="modal"
+           data-target="#exampleModalCenter1">
       <div class="input-group">
         <input type="text" class="form-control" [(ngModel)]="C2" aria-label="Renda mensual unitat familiar">
         <div class="input-group-append">
@@ -17,104 +22,118 @@
         </div>
       </div>
     </div>
-    <div class="m-1">
-      <label class="mr-2" for="inlineFormCustomSelectPref">Membres de la unitat familiar:</label>
+    <div class="col-md-3">
+      <label class="mr-2" data-toggle="modal"
+             data-target="#exampleModalCenter2">Membres de la unitat familiar:</label>
       <img src="./assets/images/help.png" style="width: 20px; height: 20px; cursor:pointer;" data-toggle="modal"
-           data-target="#exampleModalCenter">
+           data-target="#exampleModalCenter2">
       <input class="form-control" type="text" [(ngModel)]="C3">
     </div>
+    <div class="col-md-4"></div>
   </div>
 
-  <div class="row col-md-8">
-    <br/>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="germans" name="germans" [(ngModel)]="germans">
-      <label class="form-check-label" for="defaultCheck1">
-        L’infant tindrà, durant el curs escolar pel qual es matricula, altres germans i/o germanes matriculats/des a
-        Marrecs?
-      </label>
-    </div>
-    <br/>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="discapacitat" name="discapacitat"
-             [(ngModel)]="discapacitat">
-      <label class="form-check-label" for="defaultCheck2">
-        L’infant tindrà, durant el
-        curs escolar pel qual es matricula,
-        Discapacitat o invalidesa d’algun membre del nucli familiar
-      </label>
-    </div>
-    <br/>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="regim_acolliment" name="regim_acolliment"
-             [(ngModel)]="regim_acolliment">
-      <label class="form-check-label" for="defaultCheck3">
-        L’infant tindrà,
-        durant el curs escolar pel qual es matricula,
-        Infant en règim d'acolliment 10%
-      </label>
-    </div>
-  </div>
-
-
-  <div class="row col-md-6 p-3">
-    <table class="table">
-      <thead class="thead-dark">
-      <tr>
-        <th scope="col">Servei</th>
-        <th scope="col">Quota bàsica</th>
-        <th scope="col">Quota personal</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <th scope="row">Escolarització</th>
-        <td>{{ B12 }} €</td>
-        <td>{{ D12() }} €</td>
-      </tr>
-      <tr>
-        <th scope="row" colspan="3" class="table-secondary">Servei de menjador</th>
-      </tr>
-      <tr>
-        <th scope="row">Menjador complert</th>
-        <td>{{ B15 }} €</td>
-        <td>{{ D15() }} €</td>
-      </tr>
-      <tr>
-        <th scope="row">Menjador lactants</th>
-        <td>{{ B16 }} €</td>
-        <td>{{ D16() }} €</td>
-      </tr>
-      <tr>
-        <th scope="row">Berenar</th>
-        <td>{{ B17 }} €</td>
-        <td>{{ D17() }} €</td>
-      </tr>
-      <tr>
-        <th scope="row" colspan="3" class="table-secondary">Servei d'acollida (de 8 a 8.30 h o de 17 a 17.30 h)</th>
-      </tr>
-      <tr>
-        <th scope="row">De setembre a juny</th>
-        <td>{{ B20 }} €</td>
-        <td>{{ D20() }} €</td>
-      </tr>
-      <tr>
-        <th scope="row">El juliol</th>
-        <td>{{ B21 }} €</td>
-        <td>{{ D21() }} €</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <p>
-    <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false"
-       aria-controls="multiCollapseExample1">Altres serveis</a>
-  </p>
   <div class="row">
-    <div class="col">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <br/>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="germans" name="germans" [(ngModel)]="germans">
+        <label class="form-check-label">
+          L’infant tindrà, durant el curs escolar pel qual es matricula, altres germans i/o germanes matriculats/des a
+          Marrecs?
+        </label>
+      </div>
+      <br/>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="discapacitat" name="discapacitat"
+               [(ngModel)]="discapacitat">
+        <label class="form-check-label">
+          L’infant tindrà, durant el
+          curs escolar pel qual es matricula,
+          Discapacitat o invalidesa d’algun membre del nucli familiar
+        </label>
+      </div>
+      <br/>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="regim_acolliment" name="regim_acolliment"
+               [(ngModel)]="regim_acolliment">
+        <label class="form-check-label">
+          L’infant tindrà,
+          durant el curs escolar pel qual es matricula,
+          Infant en règim d'acolliment 10%
+        </label>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+
+
+  <div class="row pt-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Servei</th>
+          <th scope="col">Quota bàsica</th>
+          <th scope="col">Quota personal</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Escolarització</th>
+          <td>{{ B12 }} €</td>
+          <td>{{ D12() }} €</td>
+        </tr>
+        <tr>
+          <th scope="row" colspan="3" class="table-secondary">Servei de menjador</th>
+        </tr>
+        <tr>
+          <th scope="row">Menjador complert</th>
+          <td>{{ B15 }} €</td>
+          <td>{{ D15() }} €</td>
+        </tr>
+        <tr>
+          <th scope="row">Menjador lactants</th>
+          <td>{{ B16 }} €</td>
+          <td>{{ D16() }} €</td>
+        </tr>
+        <tr>
+          <th scope="row">Berenar</th>
+          <td>{{ B17 }} €</td>
+          <td>{{ D17() }} €</td>
+        </tr>
+        <tr>
+          <th scope="row" colspan="3" class="table-secondary">Servei d'acollida (de 8 a 8.30 h o de 17 a 17.30 h)</th>
+        </tr>
+        <tr>
+          <th scope="row">De setembre a juny</th>
+          <td>{{ B20 }} €</td>
+          <td>{{ D20() }} €</td>
+        </tr>
+        <tr>
+          <th scope="row">El juliol</th>
+          <td>{{ B21 }} €</td>
+          <td>{{ D21() }} €</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <p>
+      <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button"
+         aria-expanded="false"
+         aria-controls="multiCollapseExample1">Altres serveis</a>
+    </p>
+  </div>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
       <div class="collapse multi-collapse" id="multiCollapseExample1">
-        <div class="row col-md-6 p-3">
+        <div class="row">
           <table class="table">
             <thead class="thead-dark">
             <tr>
@@ -194,16 +213,42 @@
         </div>
       </div>
     </div>
+    <div class="col-md-3"></div>
   </div>
 
-
   <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
+       aria-labelledby="exampleModalCenterTitle1"
        aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Membres de la unitat familiar</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle1">Renda bruta anual de la unitat familiar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Dades de la Renda 2019</p>
+          Els ingressos familiars s’obtindran per la suma de les caselles 435 (base imposable general) i 460 (base
+          imposable de l'estalvi) de la declaració de la renda corresponent a l'exercici 2019 de cadascun dels membres
+          del nucli familiar.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Tancar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
+       aria-labelledby="exampleModalCenterTitle2"
+       aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle2">Membres de la unitat familiar</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -216,37 +261,36 @@
           discapacitat.
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Tancar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Tancar</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!--  <hr>-->
-  <!--  <hr>-->
-  <!--  <hr>-->
-
-  <!--  <br/>Renda mensual equivalent = {{ C5().toFixed(2) }} €-->
-  <!--  <br/>quota personal escolarizacio = {{ D12() }} €-->
-  <!--  <br/>quota personal menjador complert = {{ D15() }} €-->
-  <!--  <br/>quota personal menjador lactants = {{ D16() }} €-->
-  <!--  <br/>quota berenar = {{ D17() }} €-->
-
-  <!--  <br/>servei acollida set a juny personal = {{ D20() }} €-->
-  <!--  <br/>servei acollida juliol personal = {{ D21() }} €-->
-
-  <!--  <br/>menjador 3 cops setmana complert = {{ D28() }} €-->
-  <!--  <br/>menjador 3 cops setmana lactants = {{ D29() }} €-->
-
-  <!--  <br/>menjador 2 cops setmana complert = {{ D31() }} €-->
-  <!--  <br/>menjador 2 cops setmana lactants = {{ D32() }} €-->
-
-  <!--  <br/>menjador 1 cops setmana complert = {{ D34() }} €-->
-  <!--  <br/>menjador 1 cops setmana lactants = {{ D35() }} €-->
-
-  <!--  <br/>esporadic menjador complert = {{ D38() }} €-->
-  <!--  <br/>esporadic menjador lactants = {{ D39() }} €-->
-  <!--  <br/>esporadic berenar = {{ D40() }} €-->
-  <!--  <br/>esporadic 30 mins = {{ D41() }} €-->
-
 </div>
+<!--  <hr>-->
+<!--  <hr>-->
+<!--  <hr>-->
+
+<!--  <br/>Renda mensual equivalent = {{ C5().toFixed(2) }} €-->
+<!--  <br/>quota personal escolarizacio = {{ D12() }} €-->
+<!--  <br/>quota personal menjador complert = {{ D15() }} €-->
+<!--  <br/>quota personal menjador lactants = {{ D16() }} €-->
+<!--  <br/>quota berenar = {{ D17() }} €-->
+
+<!--  <br/>servei acollida set a juny personal = {{ D20() }} €-->
+<!--  <br/>servei acollida juliol personal = {{ D21() }} €-->
+
+<!--  <br/>menjador 3 cops setmana complert = {{ D28() }} €-->
+<!--  <br/>menjador 3 cops setmana lactants = {{ D29() }} €-->
+
+<!--  <br/>menjador 2 cops setmana complert = {{ D31() }} €-->
+<!--  <br/>menjador 2 cops setmana lactants = {{ D32() }} €-->
+
+<!--  <br/>menjador 1 cops setmana complert = {{ D34() }} €-->
+<!--  <br/>menjador 1 cops setmana lactants = {{ D35() }} €-->
+
+<!--  <br/>esporadic menjador complert = {{ D38() }} €-->
+<!--  <br/>esporadic menjador lactants = {{ D39() }} €-->
+<!--  <br/>esporadic berenar = {{ D40() }} €-->
+<!--  <br/>esporadic 30 mins = {{ D41() }} €-->
