@@ -1,58 +1,58 @@
 import { Component } from '@angular/core';
 
 // Quotes
-const B12 = 215.75; // Escolarizacio basica
-const C12 = 10.00; // Escolarizacio minima
+const B12 = 220.00; // Escolarizacio basica
+const C12 = 10.20; // Escolarizacio minima
 
 // Servei Menjador
-const B15 = 160.10; // Menjador complet basica
-const C15 = 5.00; // Menjador complet minima
+const B15 = 163.30; // Menjador complet basica
+const C15 = 5.10; // Menjador complet minima
 
-const B16 = 80.05; // Menjador lactants basica
-const C16 = 5.00; // Menjador lactants minima
+const B16 = 81.65; // Menjador lactants basica
+const C16 = 5.10; // Menjador lactants minima
 
 const B17 = 0.65; // berenar basica
 const C17 = 0; // berenar minima
 
 // Servei d'acollida
-const B20 = 28.70; // setembre a juny basica
+const B20 = 29.30; // setembre a juny basica
 const C20 = 0; // setembre a juny minima
 
 
-const B21 = 14.35; // juliol basica
+const B21 = 14.65; // juliol basica
 const C21 = 0; // juliol minima
 
 
 // Servei Menjador fix parcial
-const B28 = 153.30; // 3 vegades setmana Menjador complet basica
+const B28 = 156.30; // 3 vegades setmana Menjador complet basica
 const C28 = 3.00; // 3 vegades setmana Menjador complet minima
 
-const B29 = 75.65; // 3 vegades setmana Menjador lactants basica
-const C29 = 3.00; // 3 vegades setmana Menjador lactants minima
+const B29 = 78.15; // 3 vegades setmana Menjador lactants basica
+const C29 = 0.00; // 3 vegades setmana Menjador lactants minima
 
-const B31 = 102.20; // 2 vegades setmana Menjador complet basica
+const B31 = 104.20; // 2 vegades setmana Menjador complet basica
 const C31 = 2.00; // 2 vegades setmana Menjador complet minima
 
-const B32 = 51.10; // 2 vegades setmana Menjador lactants basica
-const C32 = 2.00; // 2 vegades setmana Menjador lactants minima
+const B32 = 52.10; // 2 vegades setmana Menjador lactants basica
+const C32 = 0.00; // 2 vegades setmana Menjador lactants minima
 
-const B34 = 51.10; // 1 vegades setmana Menjador complet basica
+const B34 = 52.10; // 1 vegades setmana Menjador complet basica
 const C34 = 1.00; // 1 vegades setmana Menjador complet minima
 
-const B35 = 25.55; // 1 vegades setmana Menjador lactants basica
-const C35 = 1.00; // 1 vegades setmana Menjador lactants minima
+const B35 = 26.05; // 1 vegades setmana Menjador lactants basica
+const C35 = 0.00; // 1 vegades setmana Menjador lactants minima
 
 // Serveis esporadics
-const B38 = 13.00; // Menjador complet basica
+const B38 = 13.20; // Menjador complet basica
 const C38 = 0.00; // Menjador complet minima
 
-const B39 = 6.50; // Menjador lactants basica
+const B39 = 6.60; // Menjador lactants basica
 const C39 = 0.00; // Menjador lactants minima
 
 const B40 = 0.65; // Berenar basica
 const C40 = 0.00; // Berenar minima
 
-const B41 = 3.10; // esporadic 30 mins basica
+const B41 = 3.15; // esporadic 30 mins basica
 const C41 = 0.00; // esporadic 30 mins minima
 // Fi Quotes
 
