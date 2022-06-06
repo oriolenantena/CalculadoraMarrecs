@@ -1,5 +1,5 @@
 # Deploy
-Aixo esta possat a un hosting ovh de marrecs, compartit amb un wordpress (fent servir multisite de hosting ovh)
+Aixo esta posat a un hosting ovh de marrecs, compartit amb un wordpress (fent servir multisite de hosting ovh)
 
 # CalculadoraMarrecs
 
