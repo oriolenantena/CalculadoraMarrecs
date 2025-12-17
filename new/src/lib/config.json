@@ -1,0 +1,329 @@
+{
+  "$schema": "./config.schema.json",
+  "_meta": {
+    "description": "Configuració de la Calculadora de Tarifes EBM Marrecs i EBM Mainada",
+    "schoolYear": "2024-2025",
+    "lastUpdated": "2025-01-01",
+    "updatedBy": "Ajuntament de Sant Just Desvern",
+    "notes": "Actualitzar aquest fitxer cada any amb els nous preus i valor IRSC"
+  },
+
+  "irsc": {
+    "description": "Indicador de Renda de Suficiència de Catalunya (IRSC)",
+    "value": 9341.92,
+    "unit": "EUR/any",
+    "year": 2025,
+    "notes": "Valor oficial publicat per la Generalitat de Catalunya"
+  },
+
+  "tiers": {
+    "description": "Trams de renda basats en múltiples de l'IRSC. El percentatge s'aplica al preu base dels serveis.",
+    "brackets": [
+      {
+        "id": "tier1",
+        "description": "Fins a 1 vegada l'IRSC",
+        "maxIRSCMultiple": 1,
+        "percentage": 10,
+        "notes": "Famílies amb menys recursos"
+      },
+      {
+        "id": "tier2",
+        "description": "D'1 a 2 vegades l'IRSC",
+        "maxIRSCMultiple": 2,
+        "percentage": 25,
+        "notes": ""
+      },
+      {
+        "id": "tier3",
+        "description": "De 2 a 3 vegades l'IRSC",
+        "maxIRSCMultiple": 3,
+        "percentage": 55,
+        "notes": ""
+      },
+      {
+        "id": "tier4",
+        "description": "De 3 a 4 vegades l'IRSC",
+        "maxIRSCMultiple": 4,
+        "percentage": 95,
+        "notes": ""
+      },
+      {
+        "id": "tier5",
+        "description": "Més de 4 vegades l'IRSC",
+        "maxIRSCMultiple": null,
+        "percentage": 100,
+        "notes": "Preu màxim sense bonificació"
+      }
+    ]
+  },
+
+  "services": [
+    {
+      "id": "escolaritzacio",
+      "name": "Escolarització",
+      "description": "Quota mensual d'escolarització bàsica",
+      "category": "escolaritzacio",
+      "basicPrice": 226.20,
+      "unit": "EUR/mes",
+      "notes": ""
+    },
+    {
+      "id": "baixesAbsencies",
+      "name": "Baixes o absències per confinament",
+      "description": "Descompte diari per absències justificades o confinament",
+      "category": "escolaritzacio",
+      "basicPrice": 7.35,
+      "unit": "EUR/dia",
+      "notes": ""
+    },
+    {
+      "id": "menjadorComplet",
+      "name": "Menjador complert",
+      "description": "Servei de menjador mensual per a infants que ja mengen sòlids",
+      "category": "menjador",
+      "basicPrice": 167.90,
+      "unit": "EUR/mes",
+      "notes": ""
+    },
+    {
+      "id": "menjadorLactants",
+      "name": "Menjador lactants",
+      "description": "Servei de menjador mensual per a infants lactants",
+      "category": "menjador",
+      "basicPrice": 83.95,
+      "unit": "EUR/mes",
+      "notes": "Aproximadament la meitat del preu del menjador complet"
+    },
+    {
+      "id": "berenar",
+      "name": "Berenar",
+      "description": "Servei de berenar diari",
+      "category": "menjador",
+      "basicPrice": 0.70,
+      "unit": "EUR/dia",
+      "notes": ""
+    },
+    {
+      "id": "descompteMenjAbsencies",
+      "name": "Descompte menj. (absències o confinament)",
+      "description": "Descompte diari al menjador per absències justificades",
+      "category": "menjador",
+      "basicPrice": 3.10,
+      "unit": "EUR/dia",
+      "notes": ""
+    },
+    {
+      "id": "descompteMenjLactants",
+      "name": "Descompte menj. lactants (absències o confinament)",
+      "description": "Descompte diari al menjador per lactants en absències justificades",
+      "category": "menjador",
+      "basicPrice": 1.55,
+      "unit": "EUR/dia",
+      "notes": ""
+    },
+    {
+      "id": "descompteNadalSS",
+      "name": "Descompte laborable Nadal i Setmana Santa",
+      "description": "Descompte per dia laborable durant vacances de Nadal i Setmana Santa",
+      "category": "menjador",
+      "basicPrice": 7.20,
+      "unit": "EUR/dia",
+      "notes": ""
+    },
+    {
+      "id": "descompteNadalSSLactants",
+      "name": "Descompte laborable Nadal i Setmana Santa lactants",
+      "description": "Descompte per dia laborable durant vacances per a lactants",
+      "category": "menjador",
+      "basicPrice": 3.60,
+      "unit": "EUR/dia",
+      "notes": ""
+    },
+    {
+      "id": "nousAlumnesSetembre",
+      "name": "Import nous alumnes menjador setembre",
+      "description": "Quota proporcional de menjador per a nous alumnes que comencen al setembre",
+      "category": "menjador",
+      "basicPrice": 7.00,
+      "unit": "EUR/dia",
+      "notes": ""
+    },
+    {
+      "id": "nousAlumnesSetembreLactants",
+      "name": "Import nous alumnes menjador setembre lactants",
+      "description": "Quota proporcional de menjador per a nous alumnes lactants al setembre",
+      "category": "menjador",
+      "basicPrice": 3.50,
+      "unit": "EUR/dia",
+      "notes": ""
+    },
+    {
+      "id": "menjadorFix3xComplet",
+      "name": "Menjador 3 vegades/setmana complert",
+      "description": "Servei de menjador fix 3 dies per setmana",
+      "category": "menjadorParcial3x",
+      "basicPrice": 160.70,
+      "unit": "EUR/mes",
+      "notes": ""
+    },
+    {
+      "id": "menjadorFix3xLactants",
+      "name": "Menjador 3 vegades/setmana lactants",
+      "description": "Servei de menjador fix 3 dies per setmana per a lactants",
+      "category": "menjadorParcial3x",
+      "basicPrice": 80.35,
+      "unit": "EUR/mes",
+      "notes": ""
+    },
+    {
+      "id": "menjadorFix2xComplet",
+      "name": "Menjador 2 vegades/setmana complert",
+      "description": "Servei de menjador fix 2 dies per setmana",
+      "category": "menjadorParcial2x",
+      "basicPrice": 107.20,
+      "unit": "EUR/mes",
+      "notes": ""
+    },
+    {
+      "id": "menjadorFix2xLactants",
+      "name": "Menjador 2 vegades/setmana lactants",
+      "description": "Servei de menjador fix 2 dies per setmana per a lactants",
+      "category": "menjadorParcial2x",
+      "basicPrice": 53.60,
+      "unit": "EUR/mes",
+      "notes": ""
+    },
+    {
+      "id": "menjadorFix1xComplet",
+      "name": "Menjador 1 vegada/setmana complert",
+      "description": "Servei de menjador fix 1 dia per setmana",
+      "category": "menjadorParcial1x",
+      "basicPrice": 53.60,
+      "unit": "EUR/mes",
+      "notes": ""
+    },
+    {
+      "id": "menjadorFix1xLactants",
+      "name": "Menjador 1 vegada/setmana lactants",
+      "description": "Servei de menjador fix 1 dia per setmana per a lactants",
+      "category": "menjadorParcial1x",
+      "basicPrice": 26.80,
+      "unit": "EUR/mes",
+      "notes": ""
+    },
+    {
+      "id": "esporadicMenjadorComplet",
+      "name": "Esporàdic menjador complert",
+      "description": "Servei de menjador per ús esporàdic (per dia)",
+      "category": "esporadics",
+      "basicPrice": 13.60,
+      "unit": "EUR/dia",
+      "notes": ""
+    },
+    {
+      "id": "esporadicMenjadorLactants",
+      "name": "Esporàdic menjador lactants",
+      "description": "Servei de menjador esporàdic per a lactants (per dia)",
+      "category": "esporadics",
+      "basicPrice": 6.80,
+      "unit": "EUR/dia",
+      "notes": ""
+    },
+    {
+      "id": "acollidaOctJuny",
+      "name": "Servei acollida (octubre-juny)",
+      "description": "Servei d'acollida matinal i/o tarda durant el curs escolar",
+      "category": "acollida",
+      "basicPrice": 30.15,
+      "unit": "EUR/mes",
+      "notes": "Horari: 8:00-8:30 i 17:00-17:30"
+    },
+    {
+      "id": "acollidaJuliol",
+      "name": "Servei acollida (juliol)",
+      "description": "Servei d'acollida durant el mes de juliol",
+      "category": "acollida",
+      "basicPrice": 15.10,
+      "unit": "EUR/mes",
+      "notes": "Meitat de preu per ser només un mes"
+    },
+    {
+      "id": "esporadic30min",
+      "name": "Esporàdic 30 minuts",
+      "description": "Servei d'acollida esporàdic per 30 minuts",
+      "category": "acollida",
+      "basicPrice": 3.25,
+      "unit": "EUR/ús",
+      "notes": ""
+    }
+  ],
+
+  "categories": [
+    {
+      "id": "escolaritzacio",
+      "name": "Escolarització",
+      "description": "Quotes d'escolarització bàsica",
+      "order": 1
+    },
+    {
+      "id": "menjador",
+      "name": "Servei de menjador",
+      "description": "Servei de menjador complet mensual i descomptes",
+      "order": 2
+    },
+    {
+      "id": "menjadorParcial",
+      "name": "Servei de menjador fix parcial",
+      "description": "Opcions de menjador per dies fixos a la setmana",
+      "order": 3,
+      "subsections": [
+        {
+          "id": "menjadorParcial3x",
+          "name": "3 vegades/setmana",
+          "order": 1
+        },
+        {
+          "id": "menjadorParcial2x",
+          "name": "2 vegades/setmana",
+          "order": 2
+        },
+        {
+          "id": "menjadorParcial1x",
+          "name": "1 vegada/setmana",
+          "order": 3
+        }
+      ]
+    },
+    {
+      "id": "esporadics",
+      "name": "Serveis esporàdics",
+      "description": "Ús puntual del servei de menjador",
+      "order": 4
+    },
+    {
+      "id": "acollida",
+      "name": "Servei d'acollida (8:00-8:30 i 17:00-17:30)",
+      "description": "Servei d'acollida matinal i de tarda",
+      "order": 5
+    }
+  ],
+
+  "formulas": {
+    "description": "Fórmules utilitzades en els càlculs",
+    "equivalentIncome": {
+      "formula": "renda_familiar / (sqrt(membres_familia) / sqrt(2))",
+      "description": "Calcula la renda equivalent ajustada per la mida de la família",
+      "example": "Una família de 4 membres amb 30.000€ de renda: 30000 / (sqrt(4) / sqrt(2)) = 30000 / 1.414 = 21.213€"
+    },
+    "irscMultiple": {
+      "formula": "renda_equivalent / IRSC_base",
+      "description": "Calcula quantes vegades l'IRSC representa la renda equivalent",
+      "example": "Amb renda equivalent de 18.684€ i IRSC de 9.342€: 18684 / 9342 = 2.0 vegades"
+    },
+    "personalQuota": {
+      "formula": "preu_base * percentatge_tram",
+      "description": "Calcula la quota personal aplicant el percentatge del tram corresponent",
+      "example": "Escolarització (226.20€) al tram 2 (25%): 226.20 * 0.25 = 56.55€"
+    }
+  }
+}

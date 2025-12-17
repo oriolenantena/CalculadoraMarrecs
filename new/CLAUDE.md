@@ -46,7 +46,8 @@ src/
 │   └── ui/              # shadcn/ui components (button, card, input, etc.)
 └── lib/
     ├── calculator.ts    # Core calculation functions
-    ├── prices.ts        # 2025 pricing configuration and IRSC base
+    ├── config.json      # All pricing and calculation variables (edit this for yearly updates)
+    ├── prices.ts        # Loads config.json and exports TypeScript interfaces
     └── utils.ts         # Utility functions
 ```
 
@@ -71,10 +72,15 @@ src/
 
 ## Yearly Updates
 
-When updating for a new school year:
+When updating for a new school year, edit **`src/lib/config.json`**:
 
-1. **src/lib/prices.ts**: Update `IRSC_BASE` value and all service prices in `SERVICES` array
-2. **src/app/page.tsx**: Update footer text with new school year (e.g., "Curs 2026-2027")
+1. Update `_meta.schoolYear` and `_meta.lastUpdated`
+2. Update `irsc.value` with the new IRSC base from the Generalitat
+3. Update `services[].basicPrice` for each service with new prices
+4. Update `tiers.brackets[].percentage` if tier percentages change
+5. Update **src/app/page.tsx** footer text with new school year (e.g., "Curs 2026-2027")
+
+The JSON file includes descriptions, units, and notes fields that are not used by the code but help document what each value means.
 
 ## Deployment
 
