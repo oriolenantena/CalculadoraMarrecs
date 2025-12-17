@@ -48,7 +48,7 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: oklch(0.99 0.005 60);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -121,8 +121,23 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
   }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 /* Print styles */
@@ -131,8 +146,20 @@
     display: none !important;
   }
 
+  @page {
+    margin: 1.5cm;
+    size: A4;
+  }
+
   body {
-    font-size: 12pt;
+    font-size: 10pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background: white !important;
+  }
+
+  html {
+    background: white !important;
   }
 
   .container {
@@ -140,11 +167,24 @@
     padding: 0;
   }
 
-  /* Ensure cards print nicely */
-  [class*="card"] {
-    break-inside: avoid;
+  /* Remove shadows for cleaner printing */
+  [class*="shadow"] {
     box-shadow: none !important;
-    border: 1px solid #ccc;
+  }
+
+  /* Ensure backgrounds print */
+  [class*="bg-gray-100"],
+  [class*="bg-gray-50"] {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background-color: #f9fafb !important;
+  }
+
+  /* Prevent page breaks inside cards */
+  [class*="rounded-3xl"],
+  [class*="rounded-2xl"] {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   /* Tables should not break across pages */
@@ -152,9 +192,46 @@
     break-inside: avoid;
   }
 
-  /* Remove backgrounds for cleaner printing */
-  [class*="bg-primary"],
-  [class*="bg-muted"] {
-    background-color: #f5f5f5 !important;
+  /* Header adjustments */
+  header {
+    padding-top: 0;
+    padding-bottom: 0.5rem;
+  }
+
+  /* Hide gradient backgrounds in print */
+  .bg-gradient-to-b,
+  .bg-gradient-to-br,
+  .bg-gradient-to-r {
+    background: white !important;
+  }
+
+  /* Tighter line heights for print */
+  p, span, div {
+    line-height: 1.4;
+  }
+
+  /* Ensure print:block works */
+  .print\:block {
+    display: block !important;
+  }
+
+  .print\:flex {
+    display: flex !important;
+  }
+
+  /* Make sure inputs don't show on print */
+  input {
+    display: none !important;
+  }
+
+  /* Hide buttons on print */
+  button {
+    display: none !important;
+  }
+
+  /* But show the category headers (they're buttons) */
+  button[class*="print:pointer-events-none"] {
+    display: flex !important;
+    pointer-events: none;
   }
 }
