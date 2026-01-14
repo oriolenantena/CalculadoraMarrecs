@@ -1,17 +1,16 @@
 import { Calculator } from "@/components/Calculator";
 import fs from "fs";
 import path from "path";
+import Markdown from "react-markdown";
 
 // Read header text from markdown file at build time
-function getHeaderText(): string[] {
+function getHeaderText(): string {
   const filePath = path.join(process.cwd(), "src/content/header_text.md");
-  const content = fs.readFileSync(filePath, "utf-8");
-  // Split by double newlines to get paragraphs, filter empty ones
-  return content.split(/\n\n+/).filter((p) => p.trim());
+  return fs.readFileSync(filePath, "utf-8");
 }
 
 export default function Home() {
-  const headerParagraphs = getHeaderText();
+  const headerContent = getHeaderText();
   return (
     <div className="min-h-screen bg-white print:bg-white">
       {/* Logo Section - white background */}
@@ -33,28 +32,8 @@ export default function Home() {
         <div className="container mx-auto px-4 pb-16 max-w-4xl print:pb-4 print:px-0">
           {/* Introduction text - hide on print */}
           <section className="mb-8 print:hidden">
-            <div className="prose prose-gray max-w-none text-gray-600 text-sm leading-relaxed space-y-4">
-              {headerParagraphs.map((paragraph, index) => {
-                // Check if paragraph is all caps (legal notice style)
-                const isAllCaps = paragraph === paragraph.toUpperCase() && paragraph.length > 20;
-                // Last paragraph gets smaller disclaimer styling
-                const isLast = index === headerParagraphs.length - 1;
-
-                return (
-                  <p
-                    key={index}
-                    className={
-                      isAllCaps
-                        ? "font-semibold text-gray-700"
-                        : isLast
-                          ? "text-xs text-gray-500"
-                          : ""
-                    }
-                  >
-                    {paragraph}
-                  </p>
-                );
-              })}
+            <div className="prose prose-sm prose-gray max-w-none text-gray-600 leading-relaxed">
+              <Markdown>{headerContent}</Markdown>
             </div>
           </section>
 

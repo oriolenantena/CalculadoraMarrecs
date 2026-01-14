@@ -44,6 +44,8 @@ src/
 │   ├── InputSection.tsx # Income and family size inputs
 │   ├── ResultsTable.tsx # Service quotas display
 │   └── ui/              # shadcn/ui components (button, card, input, etc.)
+├── content/
+│   └── header_text.md   # Introduction text displayed below logo (editable via GitHub)
 └── lib/
     ├── calculator.ts    # Core calculation functions
     ├── config.json      # All pricing and calculation variables (edit this for yearly updates)
@@ -81,6 +83,14 @@ When updating for a new school year, edit **`src/lib/config.json`**:
 5. Update **src/app/page.tsx** footer text with new school year (e.g., "Curs 2026-2027")
 
 The JSON file includes descriptions, units, and notes fields that are not used by the code but help document what each value means.
+
+## Editing Page Content
+
+**Introduction text** (`src/content/header_text.md`):
+- Displayed below the logo, before the calculator
+- Edit directly via GitHub editor — no code changes needed
+- Supports full Markdown formatting (bold, italic, links, lists, etc.)
+- Changes require rebuild and redeploy to take effect
 
 ## Deployment
 
