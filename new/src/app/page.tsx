@@ -2,6 +2,7 @@ import { Calculator } from "@/components/Calculator";
 import fs from "fs";
 import path from "path";
 import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 // Read header text from markdown file at build time
 function getHeaderText(): string {
@@ -33,7 +34,7 @@ export default function Home() {
           {/* Introduction text - hide on print */}
           <section className="mb-8 print:hidden">
             <div className="prose prose-sm prose-gray max-w-none text-gray-600 leading-relaxed">
-              <Markdown>{headerContent}</Markdown>
+              <Markdown rehypePlugins={[rehypeRaw]}>{headerContent}</Markdown>
             </div>
           </section>
 
