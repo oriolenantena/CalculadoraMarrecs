@@ -8,8 +8,6 @@ Els imports resultants es calculen en funció de les variables de renda i nombre
 
 > **L'import resultant corresponent a la quota del servei educatiu per a l'alumnat d'I2 està subvencionat íntegrament i, per tant, el cost d'aquest servei per a les famílies és de 0 €.**
 
----
-
 <div style="margin-top: 1.5rem; padding: 1rem; background-color: #f9fafb; border-radius: 0.5rem; border-left: 3px solid #d1d5db;">
 <p style="font-size: 0.8rem; color: #6b7280; margin: 0;">
 Els resultats obtinguts amb la calculadora no generen cap dret adquirit ni vinculen a l'Administració fins al moment en què, mitjançant el corresponent procediment administratiu i la verificació de totes les dades, es calculi la liquidació definitiva de la quota.
