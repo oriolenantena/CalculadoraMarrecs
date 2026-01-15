@@ -10,4 +10,6 @@ Els imports resultants es calculen en funció de les variables de renda i nombre
 
 ---
 
+<br>
+
 *Els resultats obtinguts amb la calculadora no generen cap dret adquirit ni vinculen a l'Administració fins al moment en què, mitjançant el corresponent procediment administratiu i la verificació de totes les dades, es calculi la liquidació definitiva de la quota.*
