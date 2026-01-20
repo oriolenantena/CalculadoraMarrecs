@@ -2,18 +2,18 @@
   "$schema": "./config.schema.json",
   "_meta": {
     "description": "Configuració de la Calculadora de Tarifes EBM Marrecs i EBM Mainada",
-    "schoolYear": "2024-2025",
-    "lastUpdated": "2025-01-01",
+    "schoolYear": "2025-2026",
+    "lastUpdated": "2026-01-20",
     "updatedBy": "Ajuntament de Sant Just Desvern",
     "notes": "Actualitzar aquest fitxer cada any amb els nous preus i valor IRSC"
   },
 
   "irsc": {
     "description": "Indicador de Renda de Suficiència de Catalunya (IRSC)",
-    "value": 9341.92,
+    "value": 9622.18,
     "unit": "EUR/any",
-    "year": 2025,
-    "notes": "Valor oficial publicat per la Generalitat de Catalunya"
+    "year": 2026,
+    "notes": "Valor oficial publicat per la Generalitat de Catalunya (801,85 €/mes)"
   },
 
   "tiers": {
